@@ -1,6 +1,6 @@
 const puppy = require('puppeteer');
 const fs = require("fs");
-const id = "winado8804@dghetian.com";
+const id = "jaskira24534723";
 const pass = "random123";
 async function main(){
     let browser = await puppy.launch({
