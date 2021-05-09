@@ -1,6 +1,6 @@
 const puppy = require('puppeteer');
 const fs = require("fs");
-const id = "jaskira24534723";
+const id = "jaskira48884453";
 const pass = "random123";
 async function main(){
     let browser = await puppy.launch({
@@ -13,8 +13,8 @@ async function main(){
    await tab.goto("https://twitter.com/login",{
     waitUntil: 'networkidle2',
   });
-await tab.type(".css-1dbjc4n.r-18u37iz.r-16y2uox.r-1wbh5a2.r-1wzrnnt.r-1udh08x.r-xd6kpl.r-1pn2ns4.r-ttdzmv",id);
-  await tab.type('input[name="session[password]"]',pass);
+await tab.type(".css-1dbjc4n.r-18u37iz.r-16y2uox.r-1wbh5a2.r-1wzrnnt.r-1udh08x.r-xd6kpl.r-1pn2ns4.r-ttdzmv",id,{delay:100});
+  await tab.type('input[name="session[password]"]',pass,{delay:100});
 await tab.click(".css-901oao.r-1awozwy.r-jwli3a.r-6koalj.r-18u37iz.r-16y2uox.r-1qd0xha.r-a023e6.r-b88u0q.r-1777fci.r-rjixqe.r-dnmrzs.r-bcqeeo.r-q4m81j.r-qvutc0");
 await tab.waitForSelector('a[aria-label="Search and explore"]', {visible: true});
 await tab.click('a[aria-label="Search and explore"]');
@@ -29,13 +29,14 @@ let tweets = [];
         }, tweet[i]);
         tweets.push(url);
     }
+    
     console.log(tweets);
     await tab.waitForSelector('.r-jwli3a.r-4qtqp9.r-yyyyoo.r-1q142lx.r-50lct3.r-dnmrzs.r-bnwqim.r-1plcrui.r-lrvibr.r-1srniue',{visible:true});
     await tab.click('.r-jwli3a.r-4qtqp9.r-yyyyoo.r-1q142lx.r-50lct3.r-dnmrzs.r-bnwqim.r-1plcrui.r-lrvibr.r-1srniue');
     await tab.waitForSelector('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr',{visible:true});
-    await tab.type('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr',"Top 15 trending tweets in india  ");
+    await tab.type('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr',"Top 15 trending tweets in india <br>",{delay:100});
     for(let i=0;i<tweets.length;i++){
-        await tab.type('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr',tweets[i]+"/n");
+        await tab.type('.public-DraftStyleDefault-block.public-DraftStyleDefault-ltr',tweets[i]+" ",{delay:100});
     }
 await tab.waitForSelector('div[data-testid="tweetButton"]',{visible:true});
 await tab.click('div[data-testid="tweetButton"]');
